@@ -15,10 +15,10 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public partial class @Input: IInputActionCollection2, IDisposable
+public partial class Input: IInputActionCollection2, IDisposable
 {
     public InputActionAsset asset { get; }
-    public @Input()
+    public Input()
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""Input"",
@@ -124,7 +124,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
     }
 
-    ~@Input()
+    ~Input()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, Input.Player.Disable() has not been called.");
     }
@@ -192,8 +192,8 @@ public partial class @Input: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     public struct PlayerActions
     {
-        private @Input m_Wrapper;
-        public PlayerActions(@Input wrapper) { m_Wrapper = wrapper; }
+        private Input m_Wrapper;
+        public PlayerActions(Input wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputActionMap Get() { return m_Wrapper.m_Player; }

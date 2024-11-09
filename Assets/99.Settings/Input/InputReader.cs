@@ -32,4 +32,8 @@ public class InputReader : ScriptableObject, IPlayerActions
         movement = context.ReadValue<Vector2>();
         OnMove?.Invoke(movement);
     }
+    private void OnDisable()
+    {
+        _input.Player.Disable();
+    }
 }

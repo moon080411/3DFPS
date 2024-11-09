@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlyerFallState : PlayerState
+public class PlayerFallState : PlayerState
 {
-    public PlyerFallState(Player agent) : base(agent)
+    public PlayerFallState(Player agent) : base(agent)
     {
     }
     protected override void EnterState()

@@ -16,25 +16,24 @@ public enum StateType
 public abstract class Agent : MonoBehaviour
 {
     #region component region
-    public SpriteRenderer SpriteCompo { get; private set; }
     public Rigidbody RbCompo { get; private set; }
     public AgentAnimation AniCompo { get; private set; }
     public GroundChecker GroundCheckCompo { get; private set; }
+    [field: SerializeField] public AgentData DataCompo { get; protected set; }
     #endregion
 
     protected Dictionary<StateType, State> StateEnum = new Dictionary<StateType, State>();
 
     [HideInInspector] private State _currentState;
 
-    [field: SerializeField] public AgentData DataCompo { get; protected set; }
     protected virtual void Awake()
     {
         RbCompo = GetComponent<Rigidbody>();
         AniCompo = GetComponentInChildren<AgentAnimation>();
-        SpriteCompo = GetComponentInChildren<SpriteRenderer>();
+        GroundCheckCompo = GetComponentInChildren<GroundChecker>();
         InitializeState();
     }
-    private void Start()
+    protected virtual void Start()
     {
         TransitionState(StateType.Idle);
     }

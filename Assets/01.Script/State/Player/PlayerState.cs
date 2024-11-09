@@ -8,7 +8,7 @@ public abstract class PlayerState : State
     public PlayerState(Player agent)
     {
         _agent = agent;
-        publicAgent = _agent;
+        publicAgent = agent;
     }
     protected override void EnterState()
     {
