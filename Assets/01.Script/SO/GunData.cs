@@ -12,7 +12,7 @@ public class GunData : ScriptableObject
     public float rayDistance;
 
     [Header("ContinuousAttack")]//연사가 되는가
-    public bool canContinuousAttack;
+    public bool canContinuous;
 
     [Header("Burst")]//점사
     public bool isBurst;
@@ -25,6 +25,5 @@ public class GunData : ScriptableObject
 
     [Header("MultiAttack")]//샷건처럼 여러개 쏘는가
     public bool canMultiAttack;
-    public int minBulletMulti;
-    public int maxBulletMulti;
+    public int bulletMany;
 }
