@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public enum StateType
 {
@@ -24,6 +25,8 @@ public abstract class Agent : MonoBehaviour
 
     protected Dictionary<StateType, State> StateEnum = new Dictionary<StateType, State>();
 
+    public Transform myTra;
+
     [HideInInspector] private State _currentState;
 
     protected virtual void Awake()
@@ -31,6 +34,7 @@ public abstract class Agent : MonoBehaviour
         RbCompo = GetComponent<Rigidbody>();
         AniCompo = GetComponentInChildren<AgentAnimation>();
         GroundCheckCompo = GetComponentInChildren<GroundChecker>();
+        myTra = transform;
         InitializeState();
     }
     protected virtual void Start()

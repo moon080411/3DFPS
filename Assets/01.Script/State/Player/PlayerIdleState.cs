@@ -9,9 +9,9 @@ public class PlayerIdleState : PlayerState
     }
     protected override void EnterState()
     {
-        if (Mathf.Abs(moveDir.x) + Mathf.Abs(moveDir.y) > 0.01f)
+        if (Mathf.Abs(_agent.InputCompo.movement.x) + Mathf.Abs(_agent.InputCompo.movement.y) > 0.01f)
         {
-            _agent.RbCompo.velocity = new Vector3(_agent.RbCompo.velocity.x, 0, _agent.RbCompo.velocity.z);
+            _agent.RbCompo.velocity = new Vector3(_agent.InputCompo.movement.x, 0, _agent.InputCompo.movement.y);
             _agent.TransitionState(StateType.Move);
         }
         base.EnterState();
@@ -21,7 +21,7 @@ public class PlayerIdleState : PlayerState
     public override void StateUpdate()
     {
         base.StateUpdate();
-        if(Mathf.Abs(moveDir.x) + Mathf.Abs(moveDir.y) > 0.01f)
+        if (Mathf.Abs(_agent.InputCompo.movement.x) + Mathf.Abs(_agent.InputCompo.movement.y) > 0.01f)
         {
             _agent.TransitionState(StateType.Move);
         }

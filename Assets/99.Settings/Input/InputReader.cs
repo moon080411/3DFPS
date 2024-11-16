@@ -9,7 +9,7 @@ public class InputReader : ScriptableObject, IPlayerActions
 
     private Input _input;
 
-    public Vector2 movement = Vector2.zero;
+    public Vector2 movement;
     public event Action<Vector2> OnMove;
     public event Action OnJumpKeyEvent;
 

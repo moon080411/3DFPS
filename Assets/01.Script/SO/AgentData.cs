@@ -6,5 +6,6 @@ using UnityEngine;
 public class AgentData : ScriptableObject
 {
     public float speed;
+    public float RunSpeed;
     public float jumpPower;
 }

@@ -7,17 +7,18 @@ public abstract class PlayerState : State
     protected Player _agent;
     public PlayerState(Player agent)
     {
+        iAmPlayer = true;
         _agent = agent;
         publicAgent = agent;
     }
     protected override void EnterState()
     {
-        _agent.InputCompo.OnMove += Move;
+        //_agent.InputCompo.OnMove += Move;
         _agent.InputCompo.OnJumpKeyEvent += Jump;
     }
     protected override void ExitState()
     {
-        _agent.InputCompo.OnMove -= Move;
+        //_agent.InputCompo.OnMove -= Move;
         _agent.InputCompo.OnJumpKeyEvent -= Jump;
     }
 }
