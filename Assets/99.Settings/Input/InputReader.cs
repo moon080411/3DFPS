@@ -13,7 +13,9 @@ public class InputReader : ScriptableObject, IPlayerActions
     public event Action<Vector2> OnMove;
     public event Action OnJumpKeyEvent;
     public event Action OnZoomKeyEvent;
+    public event Action OnAttackKeyEvent;
     public event Action<bool> OnRunEvent;
+    public event Action<bool> OnAttackEvent;
 
     private void OnEnable()
     {
@@ -48,5 +50,15 @@ public class InputReader : ScriptableObject, IPlayerActions
     {
         if(context.performed) OnRunEvent?.Invoke(true);
         if(context.canceled) OnRunEvent?.Invoke(false);
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            OnAttackEvent?.Invoke(true);
+            OnAttackKeyEvent?.Invoke();
+        }
+        if (context.canceled) OnAttackEvent?.Invoke(false);
     }
 }

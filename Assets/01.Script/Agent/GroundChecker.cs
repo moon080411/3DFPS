@@ -15,7 +15,7 @@ public class GroundChecker : MonoBehaviour
     {
         Gizmos.color = Color.green;
 
-        Gizmos.DrawCube(transform.position, CheckerBoxSize);
+        Gizmos.DrawWireCube(transform.position, CheckerBoxSize);
         
         Gizmos.color = Color.white;
 

@@ -8,6 +8,7 @@ public class GunData : ScriptableObject
     [Header("GunInfo")]//ÃÑ Á¤º¸
     public AudioClip gunSound;
     public float attackCoolTime;
+    public int clipBullet;
     public int maxBullet;
     public float rayDistance;
 
@@ -27,7 +28,7 @@ public class GunData : ScriptableObject
     public bool canMultiAttack;
     public int bulletMany;
 
-    [Header("ZoomCount")]
+    [Header("ZoomCount")]//ÁÜÀÎÀÌ µÇ´ÂÀÚ
     public bool canZoom;
     public float ZoomAmount;
 }
