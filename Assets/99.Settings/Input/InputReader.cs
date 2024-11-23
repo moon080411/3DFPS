@@ -12,6 +12,8 @@ public class InputReader : ScriptableObject, IPlayerActions
     public Vector2 movement;
     public event Action<Vector2> OnMove;
     public event Action OnJumpKeyEvent;
+    public event Action OnZoomKeyEvent;
+    public event Action<bool> OnRunEvent;
 
     private void OnEnable()
     {
@@ -35,5 +37,16 @@ public class InputReader : ScriptableObject, IPlayerActions
     private void OnDisable()
     {
         _input.Player.Disable();
+    }
+
+    public void OnZoom(InputAction.CallbackContext context)
+    {
+        if(context.performed) OnZoomKeyEvent?.Invoke();
+    }
+
+    public void OnRun(InputAction.CallbackContext context)
+    {
+        if(context.performed) OnRunEvent?.Invoke(true);
+        if(context.canceled) OnRunEvent?.Invoke(false);
     }
 }

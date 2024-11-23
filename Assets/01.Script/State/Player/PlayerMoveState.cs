@@ -27,6 +27,6 @@ public class PlayerMoveState : PlayerState
         base.StateFixedUpdate();
         Vector3 movement = new Vector3(_agent.InputCompo.movement.x, 0, _agent.InputCompo.movement.y);
         Vector3 myMoveDir = _agent.transform.TransformDirection(movement);
-        _agent.RbCompo.velocity = myMoveDir * _agent.DataCompo.speed;
+        _agent.RbCompo.velocity = myMoveDir * _agent.speed;
     }
 }

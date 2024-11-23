@@ -26,4 +26,8 @@ public class GunData : ScriptableObject
     [Header("MultiAttack")]//¼¦°ÇÃ³·³ ¿©·¯°³ ½î´Â°¡
     public bool canMultiAttack;
     public int bulletMany;
+
+    [Header("ZoomCount")]
+    public bool canZoom;
+    public float ZoomAmount;
 }

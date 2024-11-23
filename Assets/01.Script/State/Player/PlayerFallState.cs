@@ -15,14 +15,9 @@ public class PlayerFallState : PlayerState
     }
     public override void StateUpdate()
     {
-        RunMoveCheck();
         if (_agent.GroundCheckCompo.isGround)
         {
             _agent.TransitionState(StateType.Idle);
         }
-    }
-    protected override void RunMoveCheck()
-    {
-        base.RunMoveCheck();
     }
 }

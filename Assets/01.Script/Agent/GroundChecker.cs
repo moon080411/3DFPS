@@ -15,13 +15,13 @@ public class GroundChecker : MonoBehaviour
     {
         Gizmos.color = Color.green;
 
-        Gizmos.DrawWireCube(transform.position, CheckerBoxSize);
+        Gizmos.DrawCube(transform.position, CheckerBoxSize);
         
         Gizmos.color = Color.white;
 
     }
     private bool GroundCheck()
     {
-        return isGround =  Physics.OverlapBox(transform.position,CheckerBoxSize,Quaternion.identity, ground).Length > 0;
+        return isGround =  Physics.OverlapBox(transform.position,CheckerBoxSize,transform.rotation, ground).Length > 0;
     }
 }

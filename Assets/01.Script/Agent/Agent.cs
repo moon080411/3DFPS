@@ -29,12 +29,15 @@ public abstract class Agent : MonoBehaviour
 
     [HideInInspector] private State _currentState;
 
+    public float speed;
+
     protected virtual void Awake()
     {
         RbCompo = GetComponent<Rigidbody>();
         AniCompo = GetComponentInChildren<AgentAnimation>();
         GroundCheckCompo = GetComponentInChildren<GroundChecker>();
         myTra = transform;
+        speed = DataCompo.speed;
         InitializeState();
     }
     protected virtual void Start()
