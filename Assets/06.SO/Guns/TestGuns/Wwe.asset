@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd6df81c37891d4fa46e2e9a7eb9916, type: 3}
+  m_Name: Wwe
+  m_EditorClassIdentifier: 
+  gunSound: {fileID: 0}
+  weaponInfoSprite: {fileID: 0}
+  weapon:
+  - {fileID: 8652223260922697844, guid: 7cd71838e3684724d8681abda1188e27, type: 3}
+  attackCoolTime: 1
+  isDouble: 0
+  clipBullet: 6
+  maxBullet: 0
+  rayDistance: 0
+  canContinuous: 0
+  isBurst: 0
+  burstMany: 0
+  haveRecoil: 0
+  recoilMin: 0
+  recoilMax: 0
+  canMultiAttack: 0
+  bulletMany: 0
+  canZoom: 0
+  ZoomAmount: 0

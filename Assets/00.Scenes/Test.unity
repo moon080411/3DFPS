@@ -855,6 +855,7 @@ GameObject:
   - component: {fileID: 1410749532}
   - component: {fileID: 1410749531}
   - component: {fileID: 1410749533}
+  - component: {fileID: 1410749534}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -926,6 +927,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1410749534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410749530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f2afd2cab5380d4a89a16accff8cfa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnWeaponSwap:
+    m_PersistentCalls:
+      m_Calls: []
+  OnMultipleWeapons:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWeaponPickUp:
+    m_PersistentCalls:
+      m_Calls: []
+  _weaponTrans1: {fileID: 1173077502}
+  _weaponTrans2: {fileID: 766215436}
+  _startGun: {fileID: 11400000, guid: 4ac21960d1b42c94e978b8d21c6646aa, type: 2}
 --- !u!1 &1424871229
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,6 +1196,7 @@ GameObject:
   - component: {fileID: 1701521664}
   - component: {fileID: 1701521663}
   - component: {fileID: 1701521662}
+  - component: {fileID: 1701521666}
   m_Layer: 8
   m_Name: Gun
   m_TagString: Untagged
@@ -1264,6 +1290,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1701521666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701521661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee0d72c92cbfce246b1fb8215021f166, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myData: {fileID: 11400000, guid: c5b9ae15f2f94ce46911679d4b4b9e37, type: 2}
 --- !u!1 &1774429513
 GameObject:
   m_ObjectHideFlags: 0

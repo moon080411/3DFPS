@@ -7,9 +7,11 @@ public class DropedWeapon : MonoBehaviour
     [SerializeField]GunData myData;
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent(out WeaponStorage weaponStorage))
+        if(other.GetComponentInParent<WeaponManager>())
         {
-            weaponStorage.WeaponAdd(myData);
+            WeaponManager weaponManager = other.GetComponentInParent<WeaponManager>();
+            weaponManager.PickUpWeapon(myData);
+            Destroy(gameObject);
         }
     }
 }
