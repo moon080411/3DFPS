@@ -15,13 +15,13 @@ MonoBehaviour:
   gunSound: {fileID: 0}
   weaponInfoSprite: {fileID: 0}
   weapon:
-  - {fileID: 8652223260922697844, guid: 7cd71838e3684724d8681abda1188e27, type: 3}
-  attackCoolTime: 1
+  - {fileID: 3681184141669113427, guid: 2a0589cbf10e9f943991f1fa7ba61ad1, type: 3}
+  attackCoolTime: 0.1
   isDouble: 0
-  clipBullet: 6
+  clipBullet: 20
   maxBullet: 0
   rayDistance: 0
-  canContinuous: 0
+  canContinuous: 1
   isBurst: 0
   burstMany: 0
   haveRecoil: 0

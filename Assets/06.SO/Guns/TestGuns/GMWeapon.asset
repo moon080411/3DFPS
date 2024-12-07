@@ -15,12 +15,11 @@ MonoBehaviour:
   gunSound: {fileID: 0}
   weaponInfoSprite: {fileID: 0}
   weapon:
-  - {fileID: 8652223260922697844, guid: 7cd71838e3684724d8681abda1188e27, type: 3}
-  - {fileID: 8652223260922697844, guid: 7cd71838e3684724d8681abda1188e27, type: 3}
-  attackCoolTime: 0
-  isDouble: 1
-  clipBullet: 0
-  maxBullet: 0
+  - {fileID: 3681184141669113427, guid: 2a0589cbf10e9f943991f1fa7ba61ad1, type: 3}
+  attackCoolTime: 1
+  isDouble: 0
+  clipBullet: 6
+  maxBullet: 6
   rayDistance: 0
   canContinuous: 0
   isBurst: 0
@@ -30,5 +29,5 @@ MonoBehaviour:
   recoilMax: 0
   canMultiAttack: 0
   bulletMany: 0
-  canZoom: 0
-  ZoomAmount: 0
+  canZoom: 1
+  ZoomAmount: 3

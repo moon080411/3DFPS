@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,10 @@ public class Weapon : MonoBehaviour
     private int nowBullet;
     private bool isReload = false;
     private bool isAttack = false;
+    private bool canAttack = true;
+    private bool canContinuous = false;
+    private float timer = 0;
+    private Coroutine coroutine;
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -18,37 +23,62 @@ public class Weapon : MonoBehaviour
     }
     private void Start()
     {
-        input.OnAttackEvent += Attack;
+
+        if (myWeapon.canContinuous)
+        {
+            input.OnAttackEvent += ContinuousAttacks;
+        }
+        else
+        {
+            input.OnAttackKeyEvent += Attack;
+        }
     }
-    private void Attack(bool v)
+    private void ContinuousAttacks(bool v)
     {
-        if (!isReload)
+        canContinuous = v;
+    }
+
+    private void Update()
+    {
+        if (!canAttack)
+        {
+            timer += Time.deltaTime;
+            if(timer > myWeapon.attackCoolTime)
+            {
+                canAttack = true ;
+                timer = 0 ;
+            }
+        }
+        else if(canContinuous)
+        {
+            Attack();
+        }
+        else if(!isAttack && !isReload)
+        {
+            _animator.Play("Idle");
+        }
+    }
+    private void Attack()
+    {
+        if (!isReload && canAttack&& !isAttack)
         {
             if (nowBullet > 0)
             {
-                if (myWeapon.canContinuous)
+                if (myWeapon.isDouble)
                 {
-
-                }
-                else
-                {
-                    if (v)
+                    if (_attack1)
                     {
-                        if (myWeapon.isDouble)
-                        {
-                            if (_attack1)
-                            {
-                                _attack1 = false;
-                            }
-                            else
-                            {
-                                _attack1 = true;
-                            }
-                        }
-                        _animator.Play("Attack"); }
+                        _attack1 = false;
+                    }
+                    else
+                    {
+                        _attack1 = true;
+                    }
                 }
-                nowBullet--;
+                _animator.Play("Attack");
                 isAttack = true;
+                nowBullet--;
+                canAttack = false;
             }
             else if (_attack1)
             {
@@ -63,10 +93,22 @@ public class Weapon : MonoBehaviour
     }
     public void ReloadEnd()
     {
+        nowBullet = myWeapon.clipBullet;
         isReload = false;
     }
     public void AttackEnd()
     {
         isAttack = false;
+    }
+    private void OnDestroy()
+    {
+        if (myWeapon.canContinuous)
+        {
+            input.OnAttackEvent -= ContinuousAttacks;
+        }
+        else
+        {
+            input.OnAttackKeyEvent -= Attack;
+        }
     }
 }
