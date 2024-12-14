@@ -14,6 +14,7 @@ public class GunData : ScriptableObject
     public int clipBullet;
     public int maxBullet;
     public float rayDistance;
+    public int damage;
 
     [Header("ContinuousAttack")]//연사가 되는가
     public bool canContinuous;
@@ -34,5 +35,4 @@ public class GunData : ScriptableObject
     [Header("ZoomCount")]//줌인이 되는자
     public bool canZoom;
     public float ZoomAmount;
-
 }
