@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Weapon : MonoBehaviour
 {
@@ -89,6 +90,6 @@ public class Weapon : MonoBehaviour
     }
     public void Attack()
     {
-        gunAttack.Shot(transform.position, transform.forward, myWeapon.rayDistance, myWeapon.damage);
+        //gunAttack.Shot(Camera.main.ScreenToWorldPoint(), transform.forward, myWeapon.rayDistance, myWeapon.damage);
     }
 }
