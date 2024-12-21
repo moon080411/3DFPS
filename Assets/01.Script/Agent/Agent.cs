@@ -14,13 +14,14 @@ public enum StateType
     Jump,
     Fall
 }
-public abstract class Agent : MonoBehaviour
+public abstract class Agent : MonoBehaviour, IHitable
 {
     #region component region
-    public Rigidbody RbCompo { get; private set; }
-    public AgentAnimation AniCompo { get; private set; }
-    public GroundChecker GroundCheckCompo { get; private set; }
+    public Rigidbody RbCompo { get; protected set; }
+    public AgentAnimation AniCompo { get; protected set; }
+    public GroundChecker GroundCheckCompo { get; protected set; }
     [field: SerializeField] public AgentData DataCompo { get; protected set; }
+    public Health HealthCompo { get; protected set; }
     #endregion
 
     protected Dictionary<StateType, State> StateEnum = new Dictionary<StateType, State>();
@@ -34,6 +35,7 @@ public abstract class Agent : MonoBehaviour
     protected virtual void Awake()
     {
         RbCompo = GetComponent<Rigidbody>();
+        HealthCompo = GetComponent<Health>();
         AniCompo = GetComponentInChildren<AgentAnimation>();
         GroundCheckCompo = GetComponentInChildren<GroundChecker>();
         myTra = transform;
@@ -60,5 +62,10 @@ public abstract class Agent : MonoBehaviour
     private void FixedUpdate()
     {
         _currentState.StateFixedUpdate();
+    }
+
+    public void GetHit(int damage)
+    {
+        HealthCompo.Damaged(damage);
     }
 }

@@ -18,3 +18,4 @@ MonoBehaviour:
   BaseZoom: 60
   ZoomAmount: 3
   ZoomedSpeed: 5
+  maxHealth: 10

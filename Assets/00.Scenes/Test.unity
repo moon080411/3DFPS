@@ -958,6 +958,7 @@ GameObject:
   - component: {fileID: 1410749531}
   - component: {fileID: 1410749533}
   - component: {fileID: 1410749534}
+  - component: {fileID: 1410749535}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1053,6 +1054,19 @@ MonoBehaviour:
   _weaponTrans1: {fileID: 1173077502}
   _weaponTrans2: {fileID: 766215436}
   _startGun: {fileID: 11400000, guid: 4ac21960d1b42c94e978b8d21c6646aa, type: 2}
+--- !u!114 &1410749535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410749530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab6f167e97e6c3b43b26c4a807e8df98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentData: {fileID: 11400000, guid: baeb71d07639d8b449fe39cae01c23d7, type: 2}
 --- !u!1 &1424871229
 GameObject:
   m_ObjectHideFlags: 0

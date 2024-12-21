@@ -89,6 +89,6 @@ public class Weapon : MonoBehaviour
     }
     public void Attack()
     {
-        gunAttack.Shot(transform.position, Vector3.forward, myWeapon.rayDistance, myWeapon.damage);
+        gunAttack.Shot(transform.position, transform.forward, myWeapon.rayDistance, myWeapon.damage);
     }
 }

@@ -27,7 +27,15 @@ public class Player : Agent
     {
         base.Awake();
         InputCompo.OnZoomKeyEvent += ZoomInOut;
+        HealthCompo.OnDie += GameOver;
     }
+
+    private void GameOver()
+    {
+        Time.timeScale = 0.2f;
+        //게임오버 ui 틀기
+    }
+
     protected override void Start()
     {
         base.Start();

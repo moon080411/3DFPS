@@ -11,4 +11,5 @@ public class AgentData : ScriptableObject
     public float BaseZoom;
     public float ZoomAmount;
     public float ZoomedSpeed;
+    public int maxHealth;
 }
