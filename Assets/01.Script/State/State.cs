@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public abstract class State
 {
@@ -50,4 +51,9 @@ public abstract class State
     protected virtual void ExitState()
     {
     }
+    protected void print<T>(T msg)
+    {
+        Debug.Log(msg);
+    }
+    
 }

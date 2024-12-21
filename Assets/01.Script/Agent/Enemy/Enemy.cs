@@ -6,6 +6,17 @@ using UnityEngine.UIElements;
 
 public class Enemy : Agent
 {
+    protected override void Awake()
+    {
+        base.Awake();
+        HealthCompo.OnDie += Die;
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
+
     public override void InitializeState()
     {
         foreach (StateType stateType in Enum.GetValues(typeof(StateType)))

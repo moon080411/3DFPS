@@ -15,7 +15,6 @@ public class AgentAnimation : MonoBehaviour
     {
         //Play(animationType.ToString());
         print($"Player do {animationType}");
- 
     }
     public void Play(string name)
     {

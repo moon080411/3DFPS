@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMoveState : PlayerState
@@ -15,7 +16,8 @@ public class PlayerMoveState : PlayerState
     }
     public override void StateUpdate()
     {
-        if (Mathf.Abs(moveDir.x) + Mathf.Abs(moveDir.y) <= 0.01f)
+        base.StateUpdate();
+        if (Mathf.Abs(_agent.InputCompo.movement.x) + Mathf.Abs(_agent.InputCompo.movement.y) <= 0.01f)
         {
             _agent.TransitionState(StateType.Idle);
         }
@@ -23,6 +25,8 @@ public class PlayerMoveState : PlayerState
     public override void StateFixedUpdate()
     {
         base.StateFixedUpdate();
-        _agent.RbCompo.velocity = new Vector3(moveDir.x, _agent.RbCompo.velocity.y, moveDir.y) * _agent.DataCompo.speed;
+        Vector3 movement = new Vector3(_agent.InputCompo.movement.x, 0, _agent.InputCompo.movement.y);
+        Vector3 myMoveDir = _agent.transform.TransformDirection(movement);
+        _agent.RbCompo.velocity = myMoveDir * _agent.speed;
     }
 }
