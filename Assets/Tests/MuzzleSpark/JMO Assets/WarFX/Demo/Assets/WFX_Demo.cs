@@ -37,13 +37,14 @@ public class WFX_Demo : MonoBehaviour
 		
 	void OnMouseDown()
 	{
-		RaycastHit hit = new RaycastHit();
-		if(this.GetComponent<Collider>().Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 9999f))
-		{
-			GameObject particle = spawnParticle();
-			if(!particle.name.StartsWith("WFX_MF"))
-				particle.transform.position = hit.point + particle.transform.position;
-		}
+        print("주석처리");
+        RaycastHit hit = new RaycastHit();
+		//if(this.GetComponent<Collider>().Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 9999f))
+		//{
+		//	GameObject particle = spawnParticle();
+		//	if(!particle.name.StartsWith("WFX_MF"))
+		//		particle.transform.position = hit.point + particle.transform.position;
+		//}
 	}
 	
 	public GameObject spawnParticle()
@@ -195,14 +196,14 @@ public class WFX_Demo : MonoBehaviour
 	
 	void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.LeftArrow))
-		{
-			prevParticle();
-		}
-		else if(Input.GetKeyDown(KeyCode.RightArrow))
-		{
-			nextParticle();
-		}
+		//if(Input.GetKeyDown(KeyCode.LeftArrow))
+		//{
+		//	prevParticle();
+		//}
+		//else if(Input.GetKeyDown(KeyCode.RightArrow))
+		//{
+		//	nextParticle();
+		//}
 		
 		if(rotateCam)
 		{

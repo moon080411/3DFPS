@@ -67,44 +67,44 @@ public class WFX_Demo_New : MonoBehaviour
 		UpdateUI();
 	}
 	
-	void Update()
-	{
-		if(Input.GetKeyDown(KeyCode.LeftArrow))
-		{
-			prevParticle();
-		}
-		else if(Input.GetKeyDown(KeyCode.RightArrow))
-		{
-			nextParticle();
-		}
-		else if(Input.GetKeyDown(KeyCode.Delete))
-		{
-			destroyParticles();
-		}
+	//void Update()
+	//{
+	//	if(Input.GetKeyDown(KeyCode.LeftArrow))
+	//	{
+	//		prevParticle();
+	//	}
+	//	else if(Input.GetKeyDown(KeyCode.RightArrow))
+	//	{
+	//		nextParticle();
+	//	}
+	//	else if(Input.GetKeyDown(KeyCode.Delete))
+	//	{
+	//		destroyParticles();
+	//	}
 		
-		if(Input.GetMouseButtonDown(0))
-		{
-			RaycastHit hit = new RaycastHit();
-			if(groundCollider.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 9999f))
-			{
-				GameObject particle = spawnParticle();
-				if(!particle.name.StartsWith("WFX_MF"))
-				particle.transform.position = hit.point + particle.transform.position;
-			}
-		}
+	//	if(Input.GetMouseButtonDown(0))
+	//	{
+	//		RaycastHit hit = new RaycastHit();
+	//		if(groundCollider.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 9999f))
+	//		{
+	//			GameObject particle = spawnParticle();
+	//			if(!particle.name.StartsWith("WFX_MF"))
+	//			particle.transform.position = hit.point + particle.transform.position;
+	//		}
+	//	}
 		
-		float scroll = Input.GetAxis("Mouse ScrollWheel");
-		if(scroll != 0f)
-		{
-			Camera.main.transform.Translate(Vector3.forward * (scroll < 0f ? -1f : 1f), Space.Self);
-		}
+	//	float scroll = Input.GetAxis("Mouse ScrollWheel");
+	//	if(scroll != 0f)
+	//	{
+	//		Camera.main.transform.Translate(Vector3.forward * (scroll < 0f ? -1f : 1f), Space.Self);
+	//	}
 		
-		if(Input.GetMouseButtonDown(2))
-		{
-			Camera.main.transform.position = defaultCamPosition;
-			Camera.main.transform.rotation = defaultCamRotation;
-		}
-	}
+	//	if(Input.GetMouseButtonDown(2))
+	//	{
+	//		Camera.main.transform.position = defaultCamPosition;
+	//		Camera.main.transform.rotation = defaultCamRotation;
+	//	}
+	//}
 
 	//-------------------------------------------------------------
 	// MESSAGES

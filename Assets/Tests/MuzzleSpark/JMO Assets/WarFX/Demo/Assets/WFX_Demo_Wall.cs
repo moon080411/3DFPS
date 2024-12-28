@@ -15,12 +15,13 @@ public class WFX_Demo_Wall : MonoBehaviour
 	
 	void OnMouseDown()
 	{
-		RaycastHit hit = new RaycastHit();
-		if(this.GetComponent<Collider>().Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 9999f))
-		{
-			GameObject particle = demo.spawnParticle();
-			particle.transform.position = hit.point;
-			particle.transform.rotation = Quaternion.FromToRotation(Vector3.forward, hit.normal);
-		}
+		print("주석처리");
+		//RaycastHit hit = new RaycastHit();
+		//if(this.GetComponent<Collider>().Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 9999f))
+		//{
+		//	GameObject particle = demo.spawnParticle();
+		//	particle.transform.position = hit.point;
+		//	particle.transform.rotation = Quaternion.FromToRotation(Vector3.forward, hit.normal);
+		//}
 	}
 }
