@@ -61,4 +61,9 @@ public class InputReader : ScriptableObject, IPlayerActions
         }
         if (context.canceled) OnAttackEvent?.Invoke(false);
     }
+
+    public void OnReload(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
 }
