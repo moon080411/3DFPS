@@ -25,7 +25,7 @@ public class CamMove : MonoBehaviour
 
         if (changedEuler.x > 180f) changedEuler.x -= 360f;
 
-        changedEuler.x = Mathf.Clamp(changedEuler.x + rotationX, -25f, 10f);
+        changedEuler.x = Mathf.Clamp(changedEuler.x + rotationX, -53f, 72f);
         changedParentEuler.y += rotationY;
 
         
