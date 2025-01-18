@@ -10,6 +10,7 @@ public class Player : Agent
     #region component region
     [field: SerializeField] public InputReader InputCompo { get; private set; }
     [field: SerializeField] public CinemachineVirtualCamera VirtualCamera { get; private set; }
+    [field: SerializeField] public Weapon WeaponCompo { get; private set; }
     #endregion
     private Coroutine zoomCoroutine;
     public bool isZoomed = false;
@@ -28,6 +29,7 @@ public class Player : Agent
         base.Awake();
         InputCompo.OnZoomKeyEvent += ZoomInOut;
         HealthCompo.OnDie += GameOver;
+        InputCompo.OnAttackKeyEvent += SwitchAttack;
     }
 
     private void GameOver()

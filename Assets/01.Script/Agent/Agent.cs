@@ -46,6 +46,12 @@ public abstract class Agent : MonoBehaviour, IHitable
     {
         TransitionState(StateType.Idle);
     }
+
+    protected virtual void SwitchAttack()
+    {
+        TransitionState(StateType.Attack);
+    }
+
     public abstract void InitializeState();
     internal void TransitionState(StateType desireState)
     {

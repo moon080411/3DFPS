@@ -7,89 +7,49 @@ using UnityEngine.InputSystem;
 public class Weapon : MonoBehaviour
 {
     public GunData myWeapon;
-    [SerializeField]private InputReader input;
-    private Animator _animator;
     private GunAttack gunAttack;
-    private bool canAttack = true;
-    private bool canContinuous = false;
-    private float timer = 0;
+    public int BulletCount { get; private set; }
+
+    private int AllBullet;
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
         gunAttack = transform.GetComponentInParent<GunAttack>();
     }
     private void Start()
     {
-        if (myWeapon.canContinuous)
+        BulletCount = myWeapon.clipBullet;
+        AllBullet = myWeapon.maxBullet - myWeapon.clipBullet;
+    }
+    public bool Attack()
+    {
+        if(BulletCount > 0)
         {
-            input.OnAttackEvent += ContinuousAttacks;
+            gunAttack.Shot(Camera.main.ScreenToWorldPoint(new Vector3(0.5f,0.5f)), transform.forward, myWeapon.rayDistance, myWeapon.damage);
+            return true;
+        }
+        return false;
+    }
+
+    public bool CanReload()
+    {
+        if(AllBullet > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void Reload()
+    {
+        if (AllBullet - myWeapon.clipBullet >= 0)
+        {
+            BulletCount = myWeapon.clipBullet;
+            AllBullet -= myWeapon.clipBullet;
         }
         else
         {
-            input.OnAttackKeyEvent += TryChangeState;
+            BulletCount = AllBullet;
+            AllBullet = 0;
         }
-        _animator.SetInteger("BulletCount", myWeapon.clipBullet);
-    }
-    private void TryChangeState()
-    {
-        if (_animator.GetBool("IsReloading") || _animator.GetBool("IsAttacking"))
-        {
-            return;
-        }
-        else if(canAttack && _animator.GetInteger("BulletCount") > 0)
-        {
-            canAttack  = false;
-        }
-        _animator.SetTrigger("ChangeState");
-    }
-    private void ContinuousAttacks(bool v)
-    {
-        canContinuous = v;
-    }
-
-    private void Update()
-    {
-        if (!canAttack)
-        {
-            timer += Time.deltaTime;
-            if(timer > myWeapon.attackCoolTime)
-            {
-                canAttack = true ;
-                timer = 0 ;
-            }
-        }
-        else if(canContinuous)
-        {
-            TryChangeState();
-        }
-    }
-    public void ReloadEnd()
-    {
-        _animator.SetInteger("BulletCount", BulletReload());
-    }
-
-    private int BulletReload()
-    {
-        return myWeapon.clipBullet;
-    }
-
-    public void AttackEnd()
-    {
-        _animator.SetInteger("BulletCount", _animator.GetInteger("BulletCount") - 1);
-    }
-    private void OnDestroy()
-    {
-        if (myWeapon.canContinuous)
-        {
-            input.OnAttackEvent -= ContinuousAttacks;
-        }
-        else
-        {
-            input.OnAttackKeyEvent -= TryChangeState;
-        }
-    }
-    public void Attack()
-    {
-        //gunAttack.Shot(Camera.main.ScreenToWorldPoint(), transform.forward, myWeapon.rayDistance, myWeapon.damage);
     }
 }

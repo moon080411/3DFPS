@@ -19,6 +19,14 @@ public abstract class State
 
     public virtual void StateUpdate()
     {
+        if (publicAgent.AniCompo.GetAnimator().GetCurrentAnimatorStateInfo(0).IsName("(aiming)_Single_Shot") && publicAgent.AniCompo.GetAnimator().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        {
+
+        }
+        else if (publicAgent.AniCompo.GetAnimator().GetCurrentAnimatorStateInfo(0).IsName("(aiming)Recharge") && publicAgent.AniCompo.GetAnimator().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        {
+            
+        }
         if (publicAgent.RbCompo.velocity.y < -0.01f)
         {
             publicAgent.TransitionState(StateType.Fall);

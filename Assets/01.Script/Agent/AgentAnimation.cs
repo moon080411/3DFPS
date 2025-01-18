@@ -13,7 +13,18 @@ public class AgentAnimation : MonoBehaviour
     }
     public void PlayAnimation(AnimationType animationType)
     {
-        //Play(animationType.ToString());
+        if(AnimationType.Attack == animationType)
+        {
+            Play("(aiming)_Single_Shot");
+        }
+        else if (AnimationType.Reload == animationType)
+        {
+            Play("(aiming)Recharge");
+        }
+        else
+        {
+            Play("(aiming)Idle");
+        }
         print($"Player do {animationType}");
     }
     public void Play(string name)
@@ -24,6 +35,10 @@ public class AgentAnimation : MonoBehaviour
     {
         OnAnimationAction?.Invoke();
     }
+    public Animator GetAnimator()
+    {
+        return _animator;
+    }
 }
 public enum AnimationType
 {
@@ -32,5 +47,6 @@ public enum AnimationType
     Attack,
     Dead,
     Jump,
-    Fall
+    Fall,
+    Reload
 }
