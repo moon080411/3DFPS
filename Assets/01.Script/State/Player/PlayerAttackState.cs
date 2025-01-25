@@ -11,15 +11,7 @@ public class PlayerAttackState : PlayerState
     protected override void EnterState()
     {
         base.EnterState();
-        if (_agent.WeaponCompo.Attack())
-        {
-            _agent.AniCompo.PlayAnimation(AnimationType.Attack);
-        }
-        else if (_agent.WeaponCompo.CanReload())
-        {
-            _agent.WeaponCompo.Reload();
-            _agent.AniCompo.PlayAnimation(AnimationType.Reload);
-        }
+        
     }
     public override void StateUpdate()
     {

@@ -29,9 +29,20 @@ public class Player : Agent
         base.Awake();
         InputCompo.OnZoomKeyEvent += ZoomInOut;
         HealthCompo.OnDie += GameOver;
-        InputCompo.OnAttackKeyEvent += SwitchAttack;
+        InputCompo.OnAttackKeyEvent += Attack;
     }
-
+    private void Attack()
+    {
+        if (WeaponCompo.Attack())
+        {
+            AniCompo.PlayAnimation(AnimationType.Attack);
+        }
+        else if (WeaponCompo.CanReload())
+        {
+            WeaponCompo.Reload();
+            AniCompo.PlayAnimation(AnimationType.Reload);
+        }
+    }
     private void GameOver()
     {
         Time.timeScale = 0.2f;

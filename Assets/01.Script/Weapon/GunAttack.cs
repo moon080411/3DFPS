@@ -10,13 +10,19 @@ public class GunAttack : MonoBehaviour
     {
         RaycastHit hit;
         Physics.Raycast(myPos, AttackPos, out hit , distance , myEnemy);
+        if (hit.collider == null)
+        {
+            Debug.Log("hit collider is null");
+            return;
+        }
         if(hit.transform.TryGetComponent(out IHitable hitable))
         {
+            print("this has ihitable");
             hitable.GetHit(damage);
         }
         else
         {
-
+            print("notthing");
         }
         
     }

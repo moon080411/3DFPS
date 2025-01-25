@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class Weapon : MonoBehaviour
 {
     public GunData myWeapon;
-    private GunAttack gunAttack;
+    [SerializeField]private GunAttack gunAttack;
     public int BulletCount { get; private set; }
 
     private int AllBullet;
@@ -24,7 +24,7 @@ public class Weapon : MonoBehaviour
     {
         if(BulletCount > 0)
         {
-            gunAttack.Shot(Camera.main.ScreenToWorldPoint(new Vector3(0.5f,0.5f)), transform.forward, myWeapon.rayDistance, myWeapon.damage);
+            gunAttack.Shot(Camera.main.ScreenToWorldPoint(new Vector3(0.5f,0.5f)), (Camera.main.ScreenToWorldPoint(new Vector3(0.5f, 0.5f)) + transform.forward), myWeapon.rayDistance, myWeapon.damage);
             return true;
         }
         return false;
@@ -51,5 +51,11 @@ public class Weapon : MonoBehaviour
             BulletCount = AllBullet;
             AllBullet = 0;
         }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(Camera.main.ScreenToWorldPoint(new Vector3(0.5f, 0.5f)), Camera.main.ScreenToWorldPoint(new Vector3(0.5f, 0.5f)) + transform.forward);
+        Gizmos.color = Color.white;
     }
 }
