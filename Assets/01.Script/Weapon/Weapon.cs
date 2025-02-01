@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
     [SerializeField]private GunAttack gunAttack;
     public int BulletCount { get; private set; }
 
+
     private int AllBullet;
     private void Awake()
     {
@@ -24,7 +25,7 @@ public class Weapon : MonoBehaviour
     {
         if(BulletCount > 0)
         {
-            gunAttack.Shot(Camera.main.ScreenToWorldPoint(new Vector3(0.5f,0.5f)), (Camera.main.ScreenToWorldPoint(new Vector3(0.5f, 0.5f)) + transform.forward), myWeapon.rayDistance, myWeapon.damage);
+            gunAttack.Shot(transform.position , transform.forward, myWeapon.rayDistance, myWeapon.damage);
             return true;
         }
         return false;
@@ -54,8 +55,8 @@ public class Weapon : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(Camera.main.ScreenToWorldPoint(new Vector3(0.5f, 0.5f)), Camera.main.ScreenToWorldPoint(new Vector3(0.5f, 0.5f)) + transform.forward);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(new Ray(transform.position, transform.forward ));
         Gizmos.color = Color.white;
     }
 }

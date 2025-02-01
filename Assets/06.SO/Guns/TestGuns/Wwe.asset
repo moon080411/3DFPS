@@ -20,7 +20,8 @@ MonoBehaviour:
   isDouble: 0
   clipBullet: 20
   maxBullet: 0
-  rayDistance: 0
+  rayDistance: 20
+  damage: 0
   canContinuous: 1
   isBurst: 0
   burstMany: 0

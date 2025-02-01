@@ -9,7 +9,7 @@ public class GunAttack : MonoBehaviour
     public void Shot(Vector3 myPos , Vector3 AttackPos ,float distance,int damage)
     {
         RaycastHit hit;
-        Physics.Raycast(myPos, AttackPos, out hit , distance , myEnemy);
+        Physics.Raycast(new Ray(myPos, AttackPos), out hit , distance , myEnemy);
         if (hit.collider == null)
         {
             Debug.Log("hit collider is null");
