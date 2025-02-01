@@ -3651,7 +3651,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 1774429517}
+  m_LookAt: {fileID: 0}
   m_Follow: {fileID: 1774429517}
   m_Lens:
     FieldOfView: 60
@@ -6456,11 +6456,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <DataCompo>k__BackingField: {fileID: 11400000, guid: baeb71d07639d8b449fe39cae01c23d7, type: 2}
+  <WeaponCompo>k__BackingField: {fileID: 1774429523}
   myTra: {fileID: 0}
   speed: 0
   <InputCompo>k__BackingField: {fileID: 11400000, guid: bcdbe47b276886f4b8f664769c865ba3, type: 2}
   <VirtualCamera>k__BackingField: {fileID: 1004859619}
-  <WeaponCompo>k__BackingField: {fileID: 1774429523}
   isZoomed: 0
 --- !u!4 &1410749532
 Transform:
