@@ -12,7 +12,6 @@ public class PlayerMoveState : PlayerState
     protected override void EnterState()
     {
         base.EnterState();
-        _agent.AniCompo.PlayAnimation(AnimationType.Move);
     }
     public override void StateUpdate()
     {

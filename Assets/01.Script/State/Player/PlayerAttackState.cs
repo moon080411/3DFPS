@@ -10,8 +10,7 @@ public class PlayerAttackState : PlayerState
     }
     protected override void EnterState()
     {
-        base.EnterState();
-        
+        base.EnterState();   
     }
     public override void StateUpdate()
     {

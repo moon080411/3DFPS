@@ -33,6 +33,8 @@ public abstract class Agent : MonoBehaviour, IHitable
 
     public float speed;
 
+    public bool canGun;
+
     protected virtual void Awake()
     {
         RbCompo = GetComponent<Rigidbody>();

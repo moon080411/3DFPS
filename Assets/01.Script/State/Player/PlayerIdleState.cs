@@ -16,7 +16,6 @@ public class PlayerIdleState : PlayerState
         }
         base.EnterState();
         _agent.RbCompo.velocity = Vector3.zero;
-        _agent.AniCompo.PlayAnimation(AnimationType.Idle);
     }
     public override void StateUpdate()
     {

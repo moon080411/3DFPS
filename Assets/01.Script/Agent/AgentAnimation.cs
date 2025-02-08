@@ -5,27 +5,32 @@ using UnityEngine.Events;
 
 public class AgentAnimation : MonoBehaviour
 {
-    private Animator _animator;
+    protected Animator _animator;
     public UnityEvent OnAnimationAction;
     private void Awake()
     {
         _animator = GetComponent<Animator>();
     }
-    public void PlayAnimation(AnimationType animationType)
+    public virtual void PlayAnimation(AnimationType animationType)
     {
-        if(AnimationType.Attack == animationType)
+        switch (animationType)
         {
-            Play("(aiming)_Single_Shot");
+            case AnimationType.Idle:
+                Play("(aiming)Idle");
+                break;
+            case AnimationType.Attack:
+                Play("(aiming)_Single_Shot");
+                break;
+            case AnimationType.Move:
+                Play("(aiming)Run");
+                break;
+            case AnimationType.Reload:
+                Play("(aiming)Recharge");
+                break;
+            case AnimationType.Dead:
+                Play("(aiming)Dead");
+                break;
         }
-        else if (AnimationType.Reload == animationType)
-        {
-            Play("(aiming)Recharge");
-        }
-        else
-        {
-            Play("(aiming)Idle");
-        }
-        print($"Player do {animationType}");
     }
     public void Play(string name)
     {
