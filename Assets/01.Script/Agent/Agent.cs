@@ -22,6 +22,7 @@ public abstract class Agent : MonoBehaviour, IHitable
     public GroundChecker GroundCheckCompo { get; protected set; }
     [field: SerializeField] public AgentData DataCompo { get; protected set; }
     public Health HealthCompo { get; protected set; }
+    [field: SerializeField] public Weapon WeaponCompo { get; private set; }
     #endregion
 
     protected Dictionary<StateType, State> StateEnum = new Dictionary<StateType, State>();
@@ -31,6 +32,8 @@ public abstract class Agent : MonoBehaviour, IHitable
     [HideInInspector] private State _currentState;
 
     public float speed;
+
+    public bool canGun;
 
     protected virtual void Awake()
     {
@@ -46,6 +49,12 @@ public abstract class Agent : MonoBehaviour, IHitable
     {
         TransitionState(StateType.Idle);
     }
+
+    protected virtual void SwitchAttack()
+    {
+        TransitionState(StateType.Attack);
+    }
+
     public abstract void InitializeState();
     internal void TransitionState(StateType desireState)
     {
@@ -63,8 +72,20 @@ public abstract class Agent : MonoBehaviour, IHitable
     {
         _currentState.StateFixedUpdate();
     }
+    protected virtual void Attack()
+    {
+        if (WeaponCompo.Attack())
+        {
+            AniCompo.PlayAnimation(AnimationType.Attack);
+        }
+        else if (WeaponCompo.CanReload())
+        {
+            WeaponCompo.Reload();
+            AniCompo.PlayAnimation(AnimationType.Reload);
+        }
+    }
 
-    public void GetHit(int damage)
+    public virtual void GetHit(int damage)
     {
         HealthCompo.Damaged(damage);
     }

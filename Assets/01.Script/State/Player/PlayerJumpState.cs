@@ -10,7 +10,6 @@ public class PlayerJumpState : PlayerState
     protected override void EnterState()
     {
         base.EnterState();
-        _agent.AniCompo.PlayAnimation(AnimationType.Jump);
         _agent.RbCompo.AddForce(Vector3.up * _agent.DataCompo.jumpPower, ForceMode.Impulse);
     }
     public override void StateUpdate()

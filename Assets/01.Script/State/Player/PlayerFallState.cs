@@ -11,7 +11,6 @@ public class PlayerFallState : PlayerState
     protected override void EnterState()
     {
         base.EnterState();
-        _agent.AniCompo.PlayAnimation(AnimationType.Fall);
     }
     public override void StateUpdate()
     {

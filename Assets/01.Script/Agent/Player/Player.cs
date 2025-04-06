@@ -28,8 +28,8 @@ public class Player : Agent
         base.Awake();
         InputCompo.OnZoomKeyEvent += ZoomInOut;
         HealthCompo.OnDie += GameOver;
+        InputCompo.OnAttackKeyEvent += Attack;
     }
-
     private void GameOver()
     {
         Time.timeScale = 0.2f;

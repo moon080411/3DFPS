@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Test : MonoBehaviour
+public class Test : MonoBehaviour, IHitable
 {
     private NavMeshAgent _agent;
     public NavMeshAgent Agent => _agent ??= GetComponent<NavMeshAgent>();
@@ -11,8 +11,14 @@ public class Test : MonoBehaviour
     [SerializeField]Transform _transform;
 
     [SerializeField]LayerMask _layerMask;
+    public Health HealthCompo { get; protected set; }
 
     Color _color = Color.red;
+
+    private void Awake()
+    {
+        HealthCompo = GetComponent<Health>();
+    }
 
     private void Update()
     {
@@ -37,4 +43,8 @@ public class Test : MonoBehaviour
         }
     }
 
+    public virtual void GetHit(int damage)
+    {
+        HealthCompo.Damaged(damage);
+    }
 }
